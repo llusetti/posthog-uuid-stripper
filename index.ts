@@ -19,6 +19,10 @@ export function processEvent(
   if (event?.properties && $current_url) {
     const normalized_url = stripUUIDs($current_url);
     event.properties.$current_url = normalized_url;   
+
+    console.debug(
+      `event.$current_url: "${$current_url}" normalized to "${normalized_url}"`
+    );
   }
 
   return event;
