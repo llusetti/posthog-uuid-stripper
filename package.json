@@ -1,0 +1,9 @@
+{
+  "name": "posthog-uuid-stripper",
+  "version": "0.0.1",
+  "description": "A PostHog plugin to remove UUIDs from urls",
+  "devDependencies": {
+    "@posthog/plugin-scaffold": "^1.0.4",
+    "typescript": "^4.7.3"
+  }
+}

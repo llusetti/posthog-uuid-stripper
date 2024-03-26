@@ -1,0 +1,12 @@
+{
+    "name": "UUID Stripper",
+    "url": "https://github.com/llusetti/posthog-uuid-stripper",
+    "description": "A PostHog plugin to remove UUIDs from urls",
+    "main": "index.ts",
+    "posthogVersion": ">= 1.25.0",
+    "config": [
+        {
+            "markdown": "Remove all UUIDs via RegExp from urls"
+        }
+    ]
+}
