@@ -15,6 +15,8 @@ export function processEvent(
   event: PluginEvent,
   meta: PluginMeta<PluginInput>
 ) {
+  console.debug(event, event.properties);
+  
   const $current_url = event?.properties?.$current_url;
   if (event?.properties && $current_url) {
     const normalized_url = stripUUIDs($current_url);
