@@ -2,10 +2,7 @@ import { PluginEvent, PluginInput, PluginMeta } from "@posthog/plugin-scaffold";
 
 function stripUUIDs(url: string): string {
   try {
-    const parsedUrl = new URL(url.toLocaleLowerCase());
-    parsedUrl.pathname = parsedUrl.pathname.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/, '{ID}');;
-
-    return parsedUrl.toString();
+    return url.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/, '{ID}');    
   } catch (err) {
     throw `Unable to normalize invalid URL: "${url}"`;
   }
