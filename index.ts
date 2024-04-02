@@ -1,7 +1,7 @@
 import { PluginEvent, PluginInput, PluginMeta } from "@posthog/plugin-scaffold";
 
 function stripUUIDsFromString(value: string): string {  
-    return value.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/, '#id');     
+    return value.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/g, '#id');     
 }
 
 export function processEvent(
