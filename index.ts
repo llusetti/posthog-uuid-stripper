@@ -1,11 +1,7 @@
 import { PluginEvent, PluginInput, PluginMeta } from "@posthog/plugin-scaffold";
 
-function stripUUIDs(url: string): string {
-  try {
-    return url.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/, '#id');    
-  } catch (err) {
-    throw `Unable to normalize invalid URL: "${url}"`;
-  }
+function stripUUIDsFromString(value: string): string {  
+    return value.replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/, '#id');     
 }
 
 export function processEvent(
@@ -18,12 +14,14 @@ export function processEvent(
   const $current_url = event?.properties?.$current_url;
   const $pathname = event?.properties?.$pathname;
   if (event?.properties && $current_url) {
-    const normalized_url = stripUUIDs($current_url);
+    const normalized_url = stripUUIDsFromString($current_url);
     event.properties.$current_url = normalized_url;           
   }
 
   if (event?.properties && $pathname) {
-    const normalized_path = stripUUIDs($pathname);
+    //costruiamo url farlocco per sistemarlo
+    const urlObj = new URL('http://localhost' + $pathname);    
+    const normalized_path = stripUUIDsFromString(urlObj.pathname);
     event.properties.$pathname = normalized_path;           
   }
 
