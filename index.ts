@@ -7,10 +7,7 @@ function stripUUIDsFromString(value: string): string {
 export function processEvent(
   event: PluginEvent,
   meta: PluginMeta<PluginInput>
-) {
-  meta
-  console.debug(event, event.properties);
-
+) {  
   const $current_url = event?.properties?.$current_url;
   const $pathname = event?.properties?.$pathname;
   if (event?.properties && $current_url) {
