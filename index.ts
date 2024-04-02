@@ -16,9 +16,15 @@ export function processEvent(
   console.debug(event, event.properties);
 
   const $current_url = event?.properties?.$current_url;
+  const $pathname = event?.properties?.$pathname;
   if (event?.properties && $current_url) {
     const normalized_url = stripUUIDs($current_url);
     event.properties.$current_url = normalized_url;           
+  }
+
+  if (event?.properties && $pathname) {
+    const normalized_path = stripUUIDs($pathname);
+    event.properties.$pathname = normalized_path;           
   }
 
   return event;
